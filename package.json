@@ -4,15 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:locator-chromium": "npx playwright test --headed --project=chromium",
-    "test:locator-firefox": "npx playwright test --headed --project=firefox",
-    "test:group-smoke": "npx playwright test --project=firefox --grep @smoke",
-    "test:group-nonsmoke": "npx playwright test --project=firefox --grep-invert @smoke"
+    "test:chromium": "npx playwright test --headed --project=chromium",
+    "test:firefox": "npx playwright test --headed --project=firefox",
+    "test:local:headed": "npx playwright test --headed --project=local",
+    "test:local:headless": "npx playwright test --project=local",
+    "test:retry":"npx playwright test --retries=0",
+    "test:parallel:10":"npx playwright test --workers=10",
+    "test:reporter:line":"npx playwright test --reporter=line",
+    "test:SUMMA":"SUMMA='athula onnula summa tha' npx playwright test environment-variables-test.spec.ts --reporter=line",
+    "test:group-smoke": "npx playwright test group-test.spec.ts --project=chrome --grep @smoke",
+    "test:group-homepage": "npx playwright test group-test.spec.ts --project=chrome --grep @homepage",
+    "test:group-nonsmoke": "npx playwright test group-test.spec.ts --project=chrome --grep-invert @smoke"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.36.2"
+    "@playwright/test": "^1.36.2",
+    "@faker-js/faker": "8.0.2"
   }
 }
