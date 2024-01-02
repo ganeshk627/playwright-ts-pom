@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "npx playwright test --project=chrome || true",
+    "test:chrome": "npx playwright test --headed --project=chrome",
     "test:chromium": "npx playwright test --headed --project=chromium",
     "test:firefox": "npx playwright test --headed --project=firefox",
     "test:local:headed": "npx playwright test --headed --project=local",
@@ -14,7 +16,9 @@
     "test:SUMMA": "SUMMA='athula onnula summa tha' npx playwright test environment-variables-test.spec.ts --reporter=line",
     "test:group-smoke": "npx playwright test group-test.spec.ts --project=chrome --grep @smoke",
     "test:group-homepage": "npx playwright test group-test.spec.ts --project=chrome --grep @homepage",
-    "test:group-nonsmoke": "npx playwright test group-test.spec.ts --project=chrome --grep-invert @smoke"
+    "test:group-nonsmoke": "npx playwright test group-test.spec.ts --project=chrome --grep-invert @smoke",
+
+    "posttest": "allure generate allure-results && allure-combine allure-report --dest allure-combined-report --auto-create-folders"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +26,10 @@
   "devDependencies": {
     "@applitools/eyes-playwright": "1.18.6",
     "@faker-js/faker": "8.0.2",
-    "@playwright/test": "^1.37.1"
+    "@playwright/test": "^1.39.0",
+    "allure-playwright": "^2.9.2"
+  },
+  "dependencies": {
+    "moment": "^2.29.4"
   }
 }
